@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  student: one
+  book: one
+  date_borrowed: 2026-03-19
+  date_due: 2026-03-19
+
+two:
+  student: two
+  book: two
+  date_borrowed: 2026-03-19
+  date_due: 2026-03-19
