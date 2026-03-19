@@ -1,16 +1,16 @@
 puts "Cleaning database..."
+Loan.destroy_all
 Student.destroy_all
 Book.destroy_all
 Author.destroy_all
-Loan.destroy_all
 
 puts "Creating students..."
-student1 = Student.create!(handz_id: "OL001", first_name: "Kendall", second_name: "Brown", email: "kendallbrown@gmail.com", active: true)
-puts "Created #{student1.name}."
-student2 = Student.create!(handz_id: 2, first_name: "Alex", second_name: "Smith", email: "alexsmith@gmail.com", active: true)
-puts "Created #{student2.name}."
-student3 = Student.create!(handz_id: 3, first_name: "Jamie", second_name: "Johnson", email: "jamiejohnson@gmail.com", active: false)
-puts "Created #{student3.name}."
+student1 = Student.create!(school_id: "OL001", first_name: "Kendall", second_name: "Brown", email: "kendallbrown@gmail.com")
+puts "Created #{student1.first_name}."
+student2 = Student.create!(school_id: 2, first_name: "Alex", second_name: "Smith", email: "alexsmith@gmail.com")
+puts "Created #{student2.first_name}."
+student3 = Student.create!(school_id: 3, first_name: "Jamie", second_name: "Johnson", email: "jamiejohnson@gmail.com")
+puts "Created #{student3.first_name}."
 
 puts "Created #{Student.count} students."
 
@@ -38,10 +38,10 @@ puts "Created #{Book.count} books."
 puts "Creating loans..."
 
 loan1 = Loan.create!(student: student1, book: book1, date_borrowed: Date.today, date_due: Date.today + 7.days)
-puts "Created loan of #{loan1.book.title} to #{loan1.student.name}."
+puts "Created loan of #{loan1.book.title} to #{loan1.student.first_name}."
 loan2 = Loan.create!(student: student2, book: book2, date_borrowed: Date.today, date_due: Date.today + 14.days)
-puts "Created loan of #{loan2.book.title} to #{loan2.student.name}."
+puts "Created loan of #{loan2.book.title} to #{loan2.student.first_name}."
 loan3 = Loan.create!(student: student1, book: book3, date_borrowed: Date.today, date_due: Date.today + 21.days)
-puts "Created loan of #{loan3.book.title} to #{loan3.student.name}."
+puts "Created loan of #{loan3.book.title} to #{loan3.student.first_name}."
 
 puts "Created #{Loan.count} loans."
