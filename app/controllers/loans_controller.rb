@@ -1,8 +1,10 @@
 class LoansController < ApplicationController
-  before_action :set_loans, only: [ :new, :create ]
+  before_action :set_loans, only: [ :new, :create, :index ]
   before_action :set_students, only: [ :new, :create ]
   before_action :set_books, only: [ :new, :create ]
 
+  def index
+  end
   def new
     @loan = Loan.new
   end
@@ -18,8 +20,15 @@ class LoansController < ApplicationController
   end
 
   def archive
-    @book = Book.find(params[:id])
-    @book.update(active: false)
+    @loan = Loan.find(params[:id])
+    @loan.update(active: false)
+    redirect_to root_path, notice: "Loan archived"
+  end
+
+  def activate
+    @loan = Loan.find(params[:id])
+    @loan.update(active: true)
+    redirect_to root_path, notice: "Loan activated"
   end
 
 

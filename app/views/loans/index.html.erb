@@ -1,1 +1,36 @@
-Hi from Loans#index
+<div class="row">
+  <div class="col-6 border">
+    <h2>Return a book</h2>
+    <%= form_tag loans_path, method: :get, class: "search-form d-flex" do %>
+      <%= label_tag :query, "Search Loans"%>
+      <%= text_field_tag :query, params[:query], placeholder: "Search me Seymour"%>
+      <%= submit_tag "Search", name: "", class: "btn btn-primary"%>
+    <% end %>
+    <%#= form_tag clinics_path, method: :get, class: "search-form d-flex" do %>
+      <%#= label_tag :query, "Search veterinarians", class: "visually-hidden" %>
+      <%#= text_field_tag :query, params[:query],
+            class: "form-control",
+            placeholder: "Address, specialty, species..."
+        %>
+      <%#= submit_tag "Search", name: "", class: "btn btn-primary" %>
+      <%# end %>
+    </div>
+    <div class="col-6 border">
+      <h2>Checked out books</h2>
+      <% @loans.each do |loan|%>
+        <div class="border mb-2">
+          <div class="row">
+            <%= loan.student.name%>
+          </div>
+          <div class="row">
+            <div class="col-6">
+              <%= loan.book.title %>
+            </div>
+            <div class="col-6">
+              <%= loan.date_due %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
