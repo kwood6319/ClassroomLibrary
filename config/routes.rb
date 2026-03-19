@@ -16,5 +16,12 @@ Rails.application.routes.draw do
   resources :students
   resources :authors
   resources :books
-  resources :loans
+  resources :loans do
+    member do
+      get "archive"
+      patch "archive"
+      get "activate"
+      patch "activate"
+    end
+  end
 end
