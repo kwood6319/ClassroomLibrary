@@ -17,6 +17,12 @@ class LoansController < ApplicationController
     end
   end
 
+  def archive
+    @book = Book.find(params[:id])
+    @book.update(active: false)
+  end
+
+
   private
 
   def loan_params
