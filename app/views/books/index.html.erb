@@ -1,3 +1,48 @@
-<% Book.all.each do |b| %>
-  <%= b.title%>
-<% end %>
+<div class="row">
+  <div class="col-6 border">
+    <h2>Manage Books</h2>
+    <% @books.each do |book| %>
+      <div class="row">
+        <div class="col-4">
+          <%= book.title %>
+        </div>
+        <div class="col-4">
+          <%= book.author.name %>
+        </div>
+        <div class="col-4">
+          <% if book.active %>
+            <%= button_to "Archive",
+              archive_book_path(book),
+              method: :patch,
+              data: { confirm: "Are you sure?"},
+              class: "btn btn-outline-danger"
+            %>
+          <% else %>
+            <%= button_to "Activate",
+              activate_book_path(book),
+              method: :patch,
+              class: "btn btn-outline-primary" %>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <div class="col-6 border">
+    <h2>Checked out books</h2>
+    <% Loan.includes(:student, :book).each do |loan|%>
+      <div class="border mb-2">
+        <div class="row">
+          <%= loan.student.name%>
+        </div>
+        <div class="row">
+          <div class="col-6">
+            <%= loan.book.title %>
+          </div>
+          <div class="col-6">
+            <%= loan.date_due %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

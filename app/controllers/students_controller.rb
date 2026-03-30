@@ -15,7 +15,6 @@ class StudentsController < ApplicationController
     redirect_to students_path, notice: "Student activated"
   end
 
-
   private
 
   def set_student
