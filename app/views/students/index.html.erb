@@ -3,18 +3,24 @@
     <h2>Manage Students</h2>
     <% @students.each do |student| %>
       <div class="row border m-2">
-        <%= student.name %>
-        <% if student.active %>
-          <%= button_to "Archive",
-            archive_student_path(student),
-            method: :patch,
-            data: { confirm: "Are you sure?"}
-          %>
-        <% else%>
-          <%= button_to "Activate",
-            activate_student_path(student),
-            method: :patch %>
-        <% end %>
+        <div class="col-8">
+          <%= student.name %>
+        </div>
+        <div class="col-4">
+          <% if student.active %>
+            <%= button_to "Archive",
+              archive_student_path(student),
+              method: :patch,
+              data: { confirm: "Are you sure?"},
+              class: "btn btn-outline-danger"
+            %>
+          <% else %>
+            <%= button_to "Activate",
+              activate_student_path(student),
+              method: :patch,
+              class: "btn btn-outline-primary" %>
+          <% end %>
+        </div>
       </div>
     <% end %>
   </div>
