@@ -13,7 +13,12 @@ Rails.application.routes.draw do
   # root "posts#index"
   #
   root "loans#new"
-  resources :students
+  resources :students do
+    member do
+      patch :archive
+      patch :activate
+    end
+  end
   resources :authors
   resources :books
   resources :loans do

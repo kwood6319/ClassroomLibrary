@@ -1,3 +1,45 @@
-<% @students.each do |student| %>
-  <%= student.name%>
-<% end %>
+<div class="row">
+  <div class="col-6 border">
+    <h2>Manage Students</h2>
+    <% @students.each do |student| %>
+      <div class="row border m-2">
+        <div class="col-8">
+          <%= student.name %>
+        </div>
+        <div class="col-4">
+          <% if student.active %>
+            <%= button_to "Archive",
+              archive_student_path(student),
+              method: :patch,
+              data: { confirm: "Are you sure?"},
+              class: "btn btn-outline-danger"
+            %>
+          <% else %>
+            <%= button_to "Activate",
+              activate_student_path(student),
+              method: :patch,
+              class: "btn btn-outline-primary" %>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <div class="col-6 border">
+    <h2>Checked out books</h2>
+    <% Loan.includes(:student, :book).each do |loan|%>
+      <div class="border mb-2">
+        <div class="row">
+          <%= loan.student.name%>
+        </div>
+        <div class="row">
+          <div class="col-6">
+            <%= loan.book.title %>
+          </div>
+          <div class="col-6">
+            <%= loan.date_due %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
