@@ -20,13 +20,11 @@ Rails.application.routes.draw do
     end
   end
   resources :authors
-  resources :books
-  resources :loans do
+  resources :books do
     member do
-      get "archive"
-      patch "archive"
-      get "activate"
-      patch "activate"
+      patch :archive
+      patch :activate
     end
   end
+  resources :loans
 end
