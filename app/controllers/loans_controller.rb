@@ -4,6 +4,11 @@ class LoansController < ApplicationController
   before_action :set_books, only: [ :new, :create ]
 
   def index
+    if params[:query].present?
+      @loans = Loan.includes(:student, :book).search_by_student_or_book(params[:query])
+    else
+      @loans = Loan.includes(:student, :book)
+    end
   end
   def new
     @loan = Loan.new
