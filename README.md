@@ -2,7 +2,8 @@ Current step:
 
 BOOKS
 - Need to Add method to archive and activate books
-- Need New & Create methods
+- Need New & Create
+methods
 - Add "loaned" to books when it has been loaned out
 
 STUDENT

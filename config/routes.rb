@@ -20,7 +20,7 @@ Rails.application.routes.draw do
     end
   end
   resources :authors
-  resources :books do
+  resources :books, only: [ :index, :new, :create ] do
     member do
       patch :archive
       patch :activate
