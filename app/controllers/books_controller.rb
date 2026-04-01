@@ -5,6 +5,22 @@ class BooksController < ApplicationController
     @books = Book.all
   end
 
+  def new
+    @book = Book.new
+    @authors = Author.all
+  end
+
+  def create
+    @book = Book.new(book_params)
+    @authors = Author.all
+
+    if @book.save
+      redirect_to books_path, notice: "Book was successfully registered!"
+    else
+      render :new, status: :unprocessable_entity
+    end
+  end
+
   def archive
     @book.archive!
     redirect_to books_path, notice: "Book archived"
@@ -19,5 +35,9 @@ class BooksController < ApplicationController
 
   def set_book
     @book = Book.find(params[:id])
+  end
+
+  def book_params
+    params.require(:book).permit(:title, :author_id)
   end
 end
