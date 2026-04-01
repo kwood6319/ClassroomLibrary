@@ -11,6 +11,12 @@ class StudentsController < ApplicationController
 
   def create
     @student = Student.new(student_params)
+
+    if @student.save
+      redirect_to students_path, notice: "Student was successfully registered!"
+    else
+      render :new, status: :unprocessable_entity
+    end
   end
 
   def archive
