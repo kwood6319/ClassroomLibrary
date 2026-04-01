@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   # root "posts#index"
   #
   root "loans#new"
-  resources :students do
+  resources :students, only: [ :index, :new, :create ] do
     member do
       patch :archive
       patch :activate
