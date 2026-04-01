@@ -5,6 +5,14 @@ class StudentsController < ApplicationController
     @students = Student.all
   end
 
+  def new
+    @student = Student.new
+  end
+
+  def create
+    @student = Student.new(student_params)
+  end
+
   def archive
     @student.archive!
     redirect_to students_path, notice: "Student archived"
@@ -19,5 +27,9 @@ class StudentsController < ApplicationController
 
   def set_student
     @student = Student.find(params[:id])
+  end
+
+  def student_params
+    params.require(:student).permit(:school_id, :first_name, :second_name, :email, :phone)
   end
 end
