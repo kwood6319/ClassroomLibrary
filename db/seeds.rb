@@ -38,10 +38,13 @@ puts "Created #{Book.count} books."
 puts "Creating loans..."
 
 loan1 = Loan.create!(student: student1, book: book1, date_borrowed: Date.today, date_due: Date.today + 7.days, active: true)
+book1.loaned = true
 puts "Created loan of #{loan1.book.title} to #{loan1.student.first_name}."
 loan2 = Loan.create!(student: student2, book: book2, date_borrowed: Date.today, date_due: Date.today + 14.days, active: true)
+book2.loaned = true
 puts "Created loan of #{loan2.book.title} to #{loan2.student.first_name}."
 loan3 = Loan.create!(student: student1, book: book3, date_borrowed: Date.today, date_due: Date.today + 21.days, active: true)
+book3.loaned = true
 puts "Created loan of #{loan3.book.title} to #{loan3.student.first_name}."
 
 puts "Created #{Loan.count} loans."
