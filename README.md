@@ -11,6 +11,8 @@ STUDENT
 LOANS
 - Need to update books so that only one student can loan at a time
 - Make the checkout method just archive a loan so that it can still be pulled up
+- Need to add new and create methods
+- In create method, need to switch the book's loaned status to true
 
 
 NAVBAR
