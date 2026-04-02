@@ -17,7 +17,7 @@ class Book < ApplicationRecord
   private
 
   def assign_author
-    if new_author_first_name.present? || new_author_last_name.present?
+    if new_author_first_name.present? || new_author_second_name.present?
       self.author = Author.find_or_create_by(
         first_name: new_author_first_name,
         second_name: new_author_second_name
