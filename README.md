@@ -1,10 +1,8 @@
 Current step:
 
 BOOKS
-- Need to Add method to archive and activate books
-- Need New & Create
-methods
-- Add "loaned" to books when it has been loaned out
+- Add "loaned" to books when it has been loaned out (add to schema?)
+- Change the view to have the new book as a partial in book#index
 
 STUDENT
 - Need New & Create methods
