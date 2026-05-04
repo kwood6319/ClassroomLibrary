@@ -1,11 +1,4 @@
-@import 'bootstrap/scss/bootstrap';
-@import 'bootstrap-icons/font/bootstrap-icons';
-@import "font-awesome-sprockets";
-@import "font-awesome";
-@use "font-awesome" with ( $fa-font-path: "font-awesome" );
+@import "bootstrap/scss/bootstrap";
+@import "bootstrap-icons/font/bootstrap-icons";
 
-
-
-.nav-link {
-  color: black !important;
-}
+@import "components/navbar";

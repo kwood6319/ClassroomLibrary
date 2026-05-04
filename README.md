@@ -1,3 +1,5 @@
+Run with ./bin/dev
+
 Current step:
 
 BOOKS
