@@ -1,43 +1,36 @@
 <div class="row">
-  <div class="col-6 border">
-    <div class="row">
-      <div class="col-10">
-        <h2>Manage Books</h2>
-      </div>
-      <div class="col-1">
-        <%= link_to "+", new_book_path %>
-      </div>
-      <div class="col-1">
-        <%= link_to "+", new_author_path %>
-      </div>
+  <div class="col-10">
+    <h2>Manage Books</h2>
+  </div>
+  <div class="col-1">
+    <%= link_to "+", new_book_path %>
+  </div>
+  <div class="col-1">
+    <%= link_to "+", new_author_path %>
+  </div>
+</div>
+<% @books.each do |book| %>
+  <div class="row">
+    <div class="col-4 <%= "text-muted" if book.loaned? %>">
+      <%= book.title %>
     </div>
-    <% @books.each do |book| %>
-      <div class="row">
-        <div class="col-4 <%= "text-muted" if book.loaned? %>">
-          <%= book.title %>
-        </div>
-        <div class="col-4 <%= "text-muted" if book.loaned? %>"">
-          <%= book.author.name %>
-        </div>
-        <div class="col-4">
-          <% if book.active %>
-            <%= button_to "Archive",
+    <div class="col-4 <%= "text-muted" if book.loaned? %>"">
+      <%= book.author.name %>
+    </div>
+    <div class="col-4">
+      <% if book.active %>
+        <%= button_to "Archive",
               archive_book_path(book),
               method: :patch,
               data: { confirm: "Are you sure?"},
               class: "btn btn-outline-danger"
             %>
-          <% else %>
-            <%= button_to "Activate",
+      <% else %>
+        <%= button_to "Activate",
               activate_book_path(book),
               method: :patch,
               class: "btn btn-outline-primary" %>
-          <% end %>
-        </div>
-      </div>
-    <% end %>
+      <% end %>
+    </div>
   </div>
-  <div class="col-6 border">
-    <%= render "shared/checkedout" %>
-  </div>
-</div>
+<% end %>

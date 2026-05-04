@@ -1,37 +1,30 @@
 <div class="row">
-  <div class="col-6 border">
-    <div class="row">
-      <div class="col-9">
-        <h2>Manage Students</h2>
-      </div>
-      <div class="col-3">
-        <%= link_to "+", new_student_path %>
-      </div>
+  <div class="col-9">
+    <h2>Manage Students</h2>
+  </div>
+  <div class="col-3">
+    <%= link_to "+", new_student_path %>
+  </div>
+</div>
+<% @students.each do |student| %>
+  <div class="row border m-2">
+    <div class="col-8">
+      <%= student.name %>
     </div>
-    <% @students.each do |student| %>
-      <div class="row border m-2">
-        <div class="col-8">
-          <%= student.name %>
-        </div>
-        <div class="col-4">
-          <% if student.active %>
-            <%= button_to "Archive",
+    <div class="col-4">
+      <% if student.active %>
+        <%= button_to "Archive",
               archive_student_path(student),
               method: :patch,
               data: { confirm: "Are you sure?"},
               class: "btn btn-outline-danger"
             %>
-          <% else %>
-            <%= button_to "Activate",
+      <% else %>
+        <%= button_to "Activate",
               activate_student_path(student),
               method: :patch,
               class: "btn btn-outline-primary" %>
-          <% end %>
-        </div>
-      </div>
-    <% end %>
+      <% end %>
+    </div>
   </div>
-  <div class="col-6 border">
-    <%= render "shared/checkedout" %>
-  </div>
-</div>
+<% end %>
