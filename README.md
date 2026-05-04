@@ -20,6 +20,8 @@ NAVBAR
 CSS
 - Everything
 
+Right hand side
+- Make into a partial so it's not re-rendering each time
 
 
 Need to change the loans on all pages to only loans where active.
