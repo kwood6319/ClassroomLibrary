@@ -32,21 +32,6 @@
     <% end %>
   </div>
   <div class="col-6 border">
-    <h2>Checked out books</h2>
-    <% Loan.includes(:student, :book).each do |loan|%>
-      <div class="border mb-2">
-        <div class="row">
-          <%= loan.student.name%>
-        </div>
-        <div class="row">
-          <div class="col-6">
-            <%= loan.book.title %>
-          </div>
-          <div class="col-6">
-            <%= loan.date_due %>
-          </div>
-        </div>
-      </div>
-    <% end %>
+    <%= render "shared/checkedout" %>
   </div>
 </div>
