@@ -12,11 +12,11 @@
             <%= loan.student.name %>
           </div>
           <div class="col-6">
-            <%= button_to "Archive",
+            <%= button_to "Return",
               archive_loan_path(loan),
               method: :patch,
               data: { confirm: "Are you sure?"},
-              class: "btn btn-outline-danger"
+              class: "btn btn-outline-primary"
             %>
           </div>
         </div>
