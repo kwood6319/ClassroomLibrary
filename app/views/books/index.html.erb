@@ -13,10 +13,10 @@
     </div>
     <% @books.each do |book| %>
       <div class="row">
-        <div class="col-4">
+        <div class="col-4 <%= "text-muted" if book.loaned? %>">
           <%= book.title %>
         </div>
-        <div class="col-4">
+        <div class="col-4 <%= "text-muted" if book.loaned? %>"">
           <%= book.author.name %>
         </div>
         <div class="col-4">
