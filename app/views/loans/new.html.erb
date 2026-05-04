@@ -3,7 +3,7 @@
     <h2>Check out a book</h2>
     <%= simple_form_for (@loan) do |f| %>
       <%= f.label :book_id, "Book:" %>
-      <%= f.collection_select :book_id, @books, :id, :title, required: true %>
+      <%= f.collection_select :book_id, @books, :id, :title, required: true, include_blank: "No books available" %>
       <%= f.label :student_id, "Student:" %>
       <%= f.collection_select :student_id, @students, :id, :name, required: true %>
       <div class="row">
@@ -16,7 +16,11 @@
           <%= f.date_field :date_due, required: true, value: (Date.today + 7.days) %>
         </div>
       </div>
-      <%= f.button :submit, "Loan", class: "btn btn-primary"%>
+      <% if @books.empty? %>
+        <button class="btn disabled"> Loan </button>
+      <% else %>
+        <%= f.button :submit, "Loan", class: "btn btn-primary"%>
+      <% end %>
     <% end %>
   </div>
   <div class="col-6 border">

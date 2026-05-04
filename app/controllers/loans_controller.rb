@@ -53,6 +53,6 @@ class LoansController < ApplicationController
   end
 
   def set_books
-    @books = Book.all
+    @books = Book.where(loaned: false)
   end
 end
