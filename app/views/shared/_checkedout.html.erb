@@ -1,19 +1,19 @@
 <div class="checkedout-container">
-  <h2 class="subtitle">Checked out books</h2>
+  <h2 class="subtitle ms-3">Checked out books</h2>
   <% @loans.each do |loan|%>
     <div class="border mb-2 mx-2 p-2">
       <div class="row">
         <p class="student-name"> <%= loan.student.name%> </p>
       </div>
       <div class="row">
-        <div class="col-6">
+        <div class="col-8">
           <% if Date.today >= loan.date_due %>
             <p class="loan-info-overdue"> <%= loan.book.title %> </p>
           <% else %>
             <p class="loan-info"> <%= loan.book.title %> </p>
           <% end %>
         </div>
-        <div class="col-6">
+        <div class="col-4">
           <% if Date.today >= loan.date_due %>
             <p class="loan-info-overdue"> Due: <%= loan.date_due.strftime('%B %e') %> </p>
           <% else %>
