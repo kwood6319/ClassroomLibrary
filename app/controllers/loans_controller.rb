@@ -18,6 +18,7 @@ class LoansController < ApplicationController
     @loan = Loan.new(loan_params)
 
     if @loan.save
+      @loan.book.update(loaned: true)
       redirect_to new_loan_path, notice: "Book loaned"
     else
       render :new, status: :unprocessable_entity
@@ -52,6 +53,6 @@ class LoansController < ApplicationController
   end
 
   def set_books
-    @books = Book.all
+    @books = Book.where(loaned: false)
   end
 end

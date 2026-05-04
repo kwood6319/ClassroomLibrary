@@ -26,9 +26,9 @@ puts "Created author #{author3.first_name} #{author3.second_name}."
 puts "Created #{Author.count} authors."
 
 puts "Creating books..."
-book1 = Book.create!(title: "1984", author: author1)
+book1 = Book.create!(title: "1984", author: author1, loaned: true)
 puts "Created book #{book1.title} by #{book1.author.first_name} #{book1.author.second_name}."
-book2 = Book.create!(title: "Pride and Prejudice", author: author2)
+book2 = Book.create!(title: "Pride and Prejudice", author: author2, loaned: true)
 puts "Created book #{book2.title} by #{book2.author.first_name} #{book2.author.second_name}."
 book3 = Book.create!(title: "Adventures of Huckleberry Finn", author: author3)
 puts "Created book #{book3.title} by #{book3.author.first_name} #{book3.author.second_name}."
@@ -38,13 +38,8 @@ puts "Created #{Book.count} books."
 puts "Creating loans..."
 
 loan1 = Loan.create!(student: student1, book: book1, date_borrowed: Date.today, date_due: Date.today + 7.days, active: true)
-book1.loaned = true
 puts "Created loan of #{loan1.book.title} to #{loan1.student.first_name}."
 loan2 = Loan.create!(student: student2, book: book2, date_borrowed: Date.today, date_due: Date.today + 14.days, active: true)
-book2.loaned = true
 puts "Created loan of #{loan2.book.title} to #{loan2.student.first_name}."
-loan3 = Loan.create!(student: student1, book: book3, date_borrowed: Date.today, date_due: Date.today + 21.days, active: true)
-book3.loaned = true
-puts "Created loan of #{loan3.book.title} to #{loan3.student.first_name}."
 
 puts "Created #{Loan.count} loans."
