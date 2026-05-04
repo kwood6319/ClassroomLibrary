@@ -3,3 +3,9 @@
 @import "font-awesome-sprockets";
 @import "font-awesome";
 @use "font-awesome" with ( $fa-font-path: "font-awesome" );
+
+
+
+.nav-link {
+  color: black !important;
+}

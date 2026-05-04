@@ -1,14 +1,24 @@
 <div class="row">
   <div class="col-6 border">
     <h2>Return a book</h2>
-    <%= form_with url: loans_path, method: :get, local: true do%>
+    <%= form_with url: loans_path, method: :get, local: true do %>
       <%= text_field_tag :query, params[:query], placeholder: "Search by student or book" %>
       <%= submit_tag "Search" %>
     <% end %>
     <% @loans.each do |loan|%>
       <div class="border mb-2">
         <div class="row">
-          <%= loan.student.name %>
+          <div class="col-6">
+            <%= loan.student.name %>
+          </div>
+          <div class="col-6">
+            <%= button_to "Return",
+              archive_loan_path(loan),
+              method: :patch,
+              data: { confirm: "Are you sure?"},
+              class: "btn btn-outline-primary"
+            %>
+          </div>
         </div>
         <div class="row">
           <div class="col-6">
@@ -22,21 +32,6 @@
     <% end %>
   </div>
   <div class="col-6 border">
-    <h2>Checked out books</h2>
-    <% Loan.includes(:student, :book).each do |loan|%>
-      <div class="border mb-2">
-        <div class="row">
-          <%= loan.student.name%>
-        </div>
-        <div class="row">
-          <div class="col-6">
-            <%= loan.book.title %>
-          </div>
-          <div class="col-6">
-            <%= loan.date_due %>
-          </div>
-        </div>
-      </div>
-    <% end %>
+    <%= render "shared/checkedout" %>
   </div>
 </div>

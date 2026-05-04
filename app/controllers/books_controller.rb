@@ -1,5 +1,6 @@
 class BooksController < ApplicationController
   before_action :set_book, only: [ :archive, :activate ]
+  before_action :set_loans, only: [ :index ]
 
   def index
     @books = Book.all
@@ -39,5 +40,9 @@ class BooksController < ApplicationController
 
   def book_params
     params.require(:book).permit(:title, :author_id, :new_author_first_name, :new_author_second_name)
+  end
+
+    def set_loans
+    @loans = Loan.where(active: true)
   end
 end

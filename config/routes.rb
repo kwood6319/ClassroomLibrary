@@ -26,5 +26,10 @@ Rails.application.routes.draw do
       patch :activate
     end
   end
-  resources :loans
+  resources :loans do
+    member do
+      patch :archive
+      patch :activate
+    end
+  end
 end
