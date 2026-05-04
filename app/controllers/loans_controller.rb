@@ -7,7 +7,7 @@ class LoansController < ApplicationController
     if params[:query].present?
       @loans = Loan.includes(:student, :book).search_by_student_or_book(params[:query])
     else
-      @loans = Loan.includes(:student, :book)
+      set_loans
     end
   end
   def new
@@ -28,6 +28,7 @@ class LoansController < ApplicationController
   def archive
     @loan = Loan.find(params[:id])
     @loan.update(active: false)
+    @loan.book.update(loaned: false)
     redirect_to root_path, notice: "Loan archived"
   end
 
@@ -45,7 +46,7 @@ class LoansController < ApplicationController
   end
 
   def set_loans
-    @loans = Loan.all
+    @loans = Loan.where(active: true)
   end
 
   def set_students

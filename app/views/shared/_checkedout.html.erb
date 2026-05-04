@@ -1,5 +1,5 @@
 <h2>Checked out books</h2>
-<% Loan.includes(:student, :book).each do |loan|%>
+<% @loans.each do |loan|%>
   <div class="border mb-2">
     <div class="row">
       <%= loan.student.name%>

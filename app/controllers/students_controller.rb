@@ -1,5 +1,6 @@
 class StudentsController < ApplicationController
   before_action :set_student, only: [ :archive, :activate ]
+  before_action :set_loans, only: [ :index ]
 
   def index
     @students = Student.all
@@ -37,5 +38,9 @@ class StudentsController < ApplicationController
 
   def student_params
     params.require(:student).permit(:school_id, :first_name, :second_name, :email, :phone)
+  end
+
+    def set_loans
+    @loans = Loan.where(active: true)
   end
 end
