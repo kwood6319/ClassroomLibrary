@@ -19,10 +19,17 @@
     <%= javascript_importmap_tags %>
   </head>
   <body>
-    <div class="container">
-      <h1>Classroom Library</h1>
+    <div class="container mt-3 px-1">
+      <h1 id="title">Classroom Library</h1>
       <%= render "shared/navbar"%>
-      <%= yield %>
+      <div class="row">
+        <div class="col-6">
+          <%= yield %>
+        </div>
+        <div class="col-6">
+          <%= render "shared/checkedout" %>
+        </div>
+      </div>
     </div>
   </body>
 </html>

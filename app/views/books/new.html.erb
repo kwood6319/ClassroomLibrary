@@ -1,17 +1,10 @@
-<div class="row">
-  <div class="col-6 border">
-    <h2>Add a New Book</h2>
-    <%= simple_form_for @book do |f| %>
-      <%= f.input :title %>
-      <%= f.input :author_id, collection: @authors, include_blank: true  %>
-      <br>
-      <p>Or create a new author:</p>
-      <%= f.input :new_author_first_name %>
-      <%= f.input :new_author_second_name %>
-      <%= f.button :submit, "Save", class: "btn btn-primary" %>
-    <% end %>
-  </div>
-  <div class="col-6 border">
-    <%= render "shared/checkedout" %>
-  </div>
-</div>
+<h2>Add a New Book</h2>
+<%= simple_form_for @book do |f| %>
+  <%= f.input :title %>
+  <%= f.input :author_id, collection: @authors, include_blank: true  %>
+  <br>
+  <p>Or create a new author:</p>
+  <%= f.input :new_author_first_name %>
+  <%= f.input :new_author_second_name %>
+  <%= f.button :submit, "Save", class: "btn btn-primary" %>
+<% end %>
