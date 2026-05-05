@@ -1,32 +1,40 @@
-<h2>Check out a book</h2>
-<% if @books.empty? %>
-  <p> There are no books currently available for loan. </p>
-<% else %>
-  <%= simple_form_for (@loan) do |f| %>
-    <div class="row">
-      <%= f.label :book_id, "Book:" %>
-      <%= f.collection_select :book_id, @books, :id, :title, required: true %>
+<div class="section-container">
+  <h2 class="subtitle ms-3">Check out a book</h2>
+  <% if @books.empty? %>
+    <div>
+      <p class="sub-info mx-2"> There are no books currently available for loan. </p>
     </div>
-    <div class="row">
-      <%= f.label :student_id, "Student:" %>
-      <%= f.collection_select :student_id, @students, :id, :name, required: true %>
-    </div>
-    <div class="row">
-      <div class="date-range-selector col-6">
-        <%= f.label :date_borrowed, "Checkout:" %>
-        <%= f.date_field :date_borrowed, required: true, value: Date.today %>
-      </div>
-      <div class="date-range-selector col-6">
-        <%= f.label :date_due, "Due date:" %>
-        <%= f.date_field :date_due, required: true, value: (Date.today + 7.days) %>
-      </div>
-    </div>
-    <div class="row">
-      <% if @books.empty? %>
-        <button class="btn disabled"> Loan </button>
-      <% else %>
-        <%= f.button :submit, "Loan", class: "btn btn-primary"%>
+  <% else %>
+    <div class="mx-2">
+      <%= simple_form_for (@loan) do |f| %>
+        <div class="checkout-book mb-2">
+          <button class="btn scan-button me-3"> <i class="bi bi-upc-scan"></i> Scan </button>
+          <%= f.label :book_id, "Book:" %>
+          <%= f.collection_select :book_id, @books, :id, :title, required: true %>
+        </div>
+        <div class="checkout-student mb-2">
+          <button class="btn scan-button me-3"> <i class="bi bi-upc-scan"></i> Scan </button>
+          <%= f.label :student_id, "Student:" %>
+          <%= f.collection_select :student_id, @students, :id, :name, required: true %>
+        </div>
+        <div class="checkout-date">
+          <div class="date-range-selector col-6">
+            <%= f.label :date_borrowed, "Checkout:" %>
+            <%= f.date_field :date_borrowed, required: true, value: Date.today %>
+          </div>
+          <div class="date-range-selector col-6">
+            <%= f.label :date_due, "Due date:" %>
+            <%= f.date_field :date_due, required: true, value: (Date.today + 7.days) %>
+          </div>
+        </div>
+        <div class="row">
+          <% if @books.empty? %>
+            <button class="btn disabled"> Loan </button>
+          <% else %>
+            <%= f.button :submit, "Loan", class: "btn btn-primary"%>
+          <% end %>
+        </div>
       <% end %>
     </div>
   <% end %>
-<% end %>
+</div>
