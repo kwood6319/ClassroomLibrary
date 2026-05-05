@@ -15,7 +15,7 @@
         <div class="checkout-student mb-2">
           <button class="btn scan-button me-3"> <i class="bi bi-upc-scan"></i> Scan </button>
           <%= f.label :student_id, "Student:" %>
-          <%= f.collection_select :student_id, @students, :id, :name, required: true %>
+          <%= f.collection_select :student_id, @students, :id, :name, required: true, input_html: { class: 'checkout-input' } %>
         </div>
         <div class="checkout-date">
           <div class="date-range-selector col-6">
