@@ -1,8 +1,8 @@
-<div class="loans-new-container">
+<div class="section-container">
   <h2 class="subtitle ms-3">Check out a book</h2>
   <% if @books.empty? %>
     <div>
-      <p> There are no books currently available for loan. </p>
+      <p class="sub-info mx-2"> There are no books currently available for loan. </p>
     </div>
   <% else %>
     <%= simple_form_for (@loan) do |f| %>
