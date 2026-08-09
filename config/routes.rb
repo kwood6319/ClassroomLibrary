@@ -25,6 +25,9 @@ Rails.application.routes.draw do
       patch :archive
       patch :activate
     end
+    collection do
+      get :lookup
+    end
   end
   resources :loans do
     member do
