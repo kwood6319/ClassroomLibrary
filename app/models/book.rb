@@ -2,6 +2,8 @@ class Book < ApplicationRecord
   belongs_to :author
   has_many :loans
 
+  validates :isbn, uniqueness: true, allow_nil: true
+
   attr_accessor :new_author_first_name, :new_author_second_name
 
   before_validation :assign_author
