@@ -1,5 +1,5 @@
 import { Controller } from "@hotwired/stimulus"
-import { Html5QrCode } from "html5-qrcode"
+import { Html5Qrcode } from "html5-qrcode"
 
 export default class extends Controller {
   static targets = ["select"]
@@ -25,7 +25,7 @@ export default class extends Controller {
     document.body.appendChild(modal)
     this.modalElement = modal
 
-    this.scanner = new Html5QrCode("scanner-viewport")
+    this.scanner = new Html5Qrcode("scanner-viewport")
     this.scanner.start(
       { facingMode: "environment" },
       { fps: 10, qrbox: { width: 250, height: 150 } },
@@ -35,6 +35,7 @@ export default class extends Controller {
   }
 
   async onScanSuccess(isbn) {
+    console.log(isbn)
     await this.closeModal()
 
     const response = await fetch(`${this.lookupUrlValue}?isbn=${encodeURIComponent(isbn)}`, {

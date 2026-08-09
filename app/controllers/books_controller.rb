@@ -51,7 +51,7 @@ class BooksController < ApplicationController
     params.require(:book).permit(:title, :author_id, :new_author_first_name, :new_author_second_name)
   end
 
-    def set_loans
+  def set_loans
     @loans = Loan.where(active: true)
   end
 end
