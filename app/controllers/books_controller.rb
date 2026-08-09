@@ -32,6 +32,15 @@ class BooksController < ApplicationController
     redirect_to students_path, notice: "Book activated"
   end
 
+  def lookup
+    book = Book.find_by(isbn: params[:isbn])
+    if book
+      render json: { id: book.id, title: book.title }
+    else
+      head :not_found
+    end
+  end
+
   private
 
   def set_book
@@ -42,7 +51,7 @@ class BooksController < ApplicationController
     params.require(:book).permit(:title, :author_id, :new_author_first_name, :new_author_second_name)
   end
 
-    def set_loans
+  def set_loans
     @loans = Loan.where(active: true)
   end
 end
